@@ -1,8 +1,8 @@
 import prognozCSS from "../styles/prognoz.module.css";
 import cloudwithrain from "../cloudwithrain.svg";
 import cloudwithrainandstorm from "../cloudwithstorm.svg";
-import moon from "../moon.svg";
-import moonandcloud from "../moonAndCloud.svg";
+import moon from "../moonReal.svg";
+import moonandcloud from "../moonAndClouds.svg";
 import React from "react";
 
 const Budni = [
