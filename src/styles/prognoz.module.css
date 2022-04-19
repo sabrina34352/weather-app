@@ -1,0 +1,56 @@
+.eachDay {
+  height: 480px;
+  /* border: 2px solid white; */
+  border-radius: 30px;
+  padding: 25px 0px 0px;
+  width: 120px;
+  filter: opacity(0.8);
+}
+.eachDay:hover {
+  filter: opacity(1);
+  background-color: #3b3838;
+  /* background-color: white; */
+}
+
+.bigFont {
+  padding: 0;
+  margin: 5px;
+  font-size: 23px;
+}
+.smallFont {
+  padding: 0;
+  margin-top: 0;
+  font-size: 17px;
+}
+.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.images {
+  margin: 20px 0;
+  width: 35px;
+  height: 30px;
+}
+
+.random {
+  height: 100px;
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    gap: 0;
+  }
+  .eachDay {
+    width: 80px;
+  }
+
+  .bigFont {
+    font-size: 17px;
+  }
+  .smallFont {
+    font-size: 13px;
+  }
+}
