@@ -41,21 +41,24 @@
   height: 100px;
 }
 
-.graphs {
-  filter: invert(1);
+.graph {
   position: absolute;
-  width: 90%;
-  top: 35%;
+  top: 37%;
+  height:80px;
+  border:1px solid red;
+  width:100%;
 }
-#graphs2 {
-  /* position:absolute;
-  width:90%; */
-  top: 55%;
+#graph2{
+  top:55%;
 }
 
 @media (max-width: 768px) {
   .mainContainer {
     gap: 0;
+  }
+  .graph{
+    left:0;
+    width:100%;
   }
   .eachDay {
     width: 70px;

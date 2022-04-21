@@ -2,10 +2,10 @@ import forecastCSS from "../styles/forecast.module.css";
 import cloudwithrain from "../assets/cloudwithrain.svg";
 import cloudwithrainandstorm from "../assets/cloudwithstorm.svg";
 import moon from "../assets/moonReal.svg";
-import graph1 from "../assets/graph1.svg";
 import moonandcloud from "../assets/moonAndClouds.svg";
-import graph2 from "../assets/graph2.svg";
 import React from "react";
+import ForecastGraph from "../components/ForecastGraph";
+import ForecastGraphNight from "../components/ForecastGraphNight";
 
 const days = [
   {
@@ -49,17 +49,8 @@ function Forecast() {
   return (
     <>
       <div className={forecastCSS.mainContainer}>
-        <img
-          src={graph1}
-          className={forecastCSS.graphs}
-          alt="temperature graph"
-        />
-        <img
-          src={graph2}
-          className={forecastCSS.graphs}
-          id={forecastCSS.graphs2}
-          alt="temperature graph"
-        />
+        <ForecastGraph />
+        <ForecastGraphNight />
         {days.map((bud) => (
           <div className={forecastCSS.eachDay} key={bud.day}>
             <p className={forecastCSS.bigFont}>{bud.day}</p>
@@ -79,6 +70,7 @@ function Forecast() {
             <p className={forecastCSS.bigFont}>{bud.wind}</p>
           </div>
         ))}
+
       </div>
     </>
   );
