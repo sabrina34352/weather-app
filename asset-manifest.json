@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/weather-widget/static/css/main.fe1f4e6b.css",
-    "main.js": "/weather-widget/static/js/main.7df77333.js",
-    "static/media/cloudwithstorm.svg": "/weather-widget/static/media/cloudwithstorm.4ecbbff900be9af39575ac9d59191a21.svg",
-    "static/media/moonAndClouds.svg": "/weather-widget/static/media/moonAndClouds.764abbfe3b661f3d9cfb137df537a396.svg",
-    "static/media/cloudwithrain.svg": "/weather-widget/static/media/cloudwithrain.f259cbebd24145e3693eef023c40a9da.svg",
-    "index.html": "/weather-widget/index.html",
-    "static/media/moonReal.svg": "/weather-widget/static/media/moonReal.e4f7f8260e7aebb68f5aab257c5307f1.svg",
-    "main.fe1f4e6b.css.map": "/weather-widget/static/css/main.fe1f4e6b.css.map",
-    "main.7df77333.js.map": "/weather-widget/static/js/main.7df77333.js.map"
+    "main.css": "/weather-app/static/css/main.fe1f4e6b.css",
+    "main.js": "/weather-app/static/js/main.07f24b08.js",
+    "static/media/cloudwithstorm.svg": "/weather-app/static/media/cloudwithstorm.4ecbbff900be9af39575ac9d59191a21.svg",
+    "static/media/moonAndClouds.svg": "/weather-app/static/media/moonAndClouds.764abbfe3b661f3d9cfb137df537a396.svg",
+    "static/media/cloudwithrain.svg": "/weather-app/static/media/cloudwithrain.f259cbebd24145e3693eef023c40a9da.svg",
+    "index.html": "/weather-app/index.html",
+    "static/media/moonReal.svg": "/weather-app/static/media/moonReal.e4f7f8260e7aebb68f5aab257c5307f1.svg",
+    "main.fe1f4e6b.css.map": "/weather-app/static/css/main.fe1f4e6b.css.map",
+    "main.07f24b08.js.map": "/weather-app/static/js/main.07f24b08.js.map"
   },
   "entrypoints": [
     "static/css/main.fe1f4e6b.css",
-    "static/js/main.7df77333.js"
+    "static/js/main.07f24b08.js"
   ]
 }
