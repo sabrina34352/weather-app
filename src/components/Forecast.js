@@ -45,7 +45,7 @@ const days = [
   },
 ];
 
-function Prognoz() {
+function Forecast() {
   return (
     <>
       <div className={forecastCSS.mainContainer}>
@@ -84,4 +84,4 @@ function Prognoz() {
   );
 }
 
-export default Prognoz;
+export default Forecast;
