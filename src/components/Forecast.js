@@ -1,13 +1,13 @@
-import prognozCSS from "../styles/prognoz.module.css";
-import cloudwithrain from "../cloudwithrain.svg";
-import cloudwithrainandstorm from "../cloudwithstorm.svg";
-import moon from "../moonReal.svg";
-import graph1 from "../graph1.svg";
-import moonandcloud from "../moonAndClouds.svg";
-import graph2 from "../graph2.svg";
+import forecastCSS from "../styles/forecast.module.css";
+import cloudwithrain from "../assets/cloudwithrain.svg";
+import cloudwithrainandstorm from "../assets/cloudwithstorm.svg";
+import moon from "../assets/moonReal.svg";
+import graph1 from "../assets/graph1.svg";
+import moonandcloud from "../assets/moonAndClouds.svg";
+import graph2 from "../assets/graph2.svg";
 import React from "react";
 
-const Budni = [
+const days = [
   {
     day: "Вчера",
     date: "06.06",
@@ -48,35 +48,35 @@ const Budni = [
 function Prognoz() {
   return (
     <>
-      <div className={prognozCSS.mainContainer}>
+      <div className={forecastCSS.mainContainer}>
         <img
           src={graph1}
-          className={prognozCSS.graphs}
+          className={forecastCSS.graphs}
           alt="temperature graph"
         />
         <img
           src={graph2}
-          className={prognozCSS.graphs}
-          id={prognozCSS.graphs2}
+          className={forecastCSS.graphs}
+          id={forecastCSS.graphs2}
           alt="temperature graph"
         />
-        {Budni.map((bud) => (
-          <div className={prognozCSS.eachDay} key={bud.day}>
-            <p className={prognozCSS.bigFont}>{bud.day}</p>
-            <p className={prognozCSS.smallFont}>{bud.date}</p>
+        {days.map((bud) => (
+          <div className={forecastCSS.eachDay} key={bud.day}>
+            <p className={forecastCSS.bigFont}>{bud.day}</p>
+            <p className={forecastCSS.smallFont}>{bud.date}</p>
             <img
               src={bud.weather}
-              className={prognozCSS.images}
+              className={forecastCSS.images}
               alt="weather"
             />
-            <div className={prognozCSS.random}></div>
-            <div className={prognozCSS.random}></div>
+            <div className={forecastCSS.random}></div>
+            <div className={forecastCSS.random}></div>
             <img
               src={bud.weatherNight}
-              className={prognozCSS.images}
+              className={forecastCSS.images}
               alt="weatherNight"
             />
-            <p className={prognozCSS.bigFont}>{bud.wind}</p>
+            <p className={forecastCSS.bigFont}>{bud.wind}</p>
           </div>
         ))}
       </div>

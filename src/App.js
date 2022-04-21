@@ -1,4 +1,4 @@
-import Prognoz from "./components/Prognoz";
+import Forecast from "./components/Forecast";
 import "./App.css";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <h1 className="header">Прогноз на 5 дней</h1>
       </header>
-      <Prognoz />
+      <Forecast />
     </div>
   );
 }
