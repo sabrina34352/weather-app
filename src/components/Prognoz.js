@@ -4,6 +4,7 @@ import cloudwithrainandstorm from "../cloudwithstorm.svg";
 import moon from "../moonReal.svg";
 import graph1 from "../graph1.svg";
 import moonandcloud from "../moonAndClouds.svg";
+import graph2 from "../graph2.svg";
 import React from "react";
 
 const Budni = [
@@ -54,7 +55,7 @@ function Prognoz() {
           alt="temperature graph"
         />
         <img
-          src={graph1}
+          src={graph2}
           className={prognozCSS.graphs}
           id={prognozCSS.graphs2}
           alt="temperature graph"
