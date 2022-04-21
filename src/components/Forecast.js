@@ -3,9 +3,9 @@ import cloudwithrain from "../assets/cloudwithrain.svg";
 import cloudwithrainandstorm from "../assets/cloudwithstorm.svg";
 import moon from "../assets/moonReal.svg";
 import moonandcloud from "../assets/moonAndClouds.svg";
-import React from "react";
 import ForecastGraph from "../components/ForecastGraph";
 import ForecastGraphNight from "../components/ForecastGraphNight";
+import React, { useRef, useEffect, useState } from "react";
 
 const days = [
   {
@@ -46,13 +46,33 @@ const days = [
 ];
 
 function Forecast() {
+  const divRef = useRef(null);
+  const childRef = useRef(null);
+  const [dataExists, setDataExists] = useState({});
+
+  useEffect(() => {
+    let widthMiddle = divRef.current.offsetWidth;
+    let WidthOfChild = childRef.current.offsetWidth;
+    console.log("Width of child: ", WidthOfChild);
+    //width of the parent container divided by the number of elements and divided by 2 to find the middle
+    // width of child container to be able to draw a line to ny exact pixels
+    setDataExists({
+      startingPoint: widthMiddle / 10,
+      widthOfContainers: WidthOfChild,
+    });
+  }, []);
   return (
     <>
-      <div className={forecastCSS.mainContainer}>
-        <ForecastGraph />
-        <ForecastGraphNight />
+      <div className={forecastCSS.mainContainer} ref={divRef}>
+        {Object.keys(dataExists).length !== 0 && (
+          <>
+            <ForecastGraph props={dataExists} />
+            <ForecastGraphNight />
+          </>
+        )}
+
         {days.map((bud) => (
-          <div className={forecastCSS.eachDay} key={bud.day}>
+          <div className={forecastCSS.eachDay} ref={childRef} key={bud.day}>
             <p className={forecastCSS.bigFont}>{bud.day}</p>
             <p className={forecastCSS.smallFont}>{bud.date}</p>
             <img
@@ -70,7 +90,6 @@ function Forecast() {
             <p className={forecastCSS.bigFont}>{bud.wind}</p>
           </div>
         ))}
-
       </div>
     </>
   );
