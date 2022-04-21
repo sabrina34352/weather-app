@@ -1,11 +1,13 @@
 .eachDay {
-  height: 480px;
+  /* height: 500px; */
   /* border: 2px solid white; */
   border-radius: 30px;
-  padding: 25px 0px 0px;
+  padding: 10px 0px 0px;
   width: 120px;
   filter: opacity(0.8);
   text-align: center;
+
+  transition: 0.3s;
 }
 .eachDay:hover {
   filter: opacity(1);
@@ -45,6 +47,7 @@
   }
   .eachDay {
     width: 70px;
+    border-radius: 20px;
   }
 
   .bigFont {
