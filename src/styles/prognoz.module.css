@@ -5,6 +5,7 @@
   padding: 25px 0px 0px;
   width: 120px;
   filter: opacity(0.8);
+  text-align: center;
 }
 .eachDay:hover {
   filter: opacity(1);
@@ -14,7 +15,6 @@
 
 .bigFont {
   padding: 0;
-  margin: 5px;
   font-size: 23px;
 }
 .smallFont {
