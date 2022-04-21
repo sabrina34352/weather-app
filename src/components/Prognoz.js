@@ -2,6 +2,7 @@ import prognozCSS from "../styles/prognoz.module.css";
 import cloudwithrain from "../cloudwithrain.svg";
 import cloudwithrainandstorm from "../cloudwithstorm.svg";
 import moon from "../moonReal.svg";
+import graph1 from "../graph1.svg";
 import moonandcloud from "../moonAndClouds.svg";
 import React from "react";
 
@@ -47,6 +48,17 @@ function Prognoz() {
   return (
     <>
       <div className={prognozCSS.mainContainer}>
+        <img
+          src={graph1}
+          className={prognozCSS.graphs}
+          alt="temperature graph"
+        />
+        <img
+          src={graph1}
+          className={prognozCSS.graphs}
+          id={prognozCSS.graphs2}
+          alt="temperature graph"
+        />
         {Budni.map((bud) => (
           <div className={prognozCSS.eachDay} key={bud.day}>
             <p className={prognozCSS.bigFont}>{bud.day}</p>
