@@ -58,7 +58,7 @@ function ForecastGraph({ data, temperature, style }) {
                     textAnchor="middle"
                     alignmentBaseline="baseline"
                     x={temperatureData.x2}
-                    y={temperatureData.y2 - 10}
+                    y={temperatureData.y2 - 15}
                   >
                     {temperature[key]}°
                   </text>
