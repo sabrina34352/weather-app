@@ -1,69 +1,101 @@
 import React from "react";
 import forecastCSS from "../styles/forecast.module.css";
 
-const temperatureDay = [23, 23, 24, 24, 22];
-const temperatureNight = [13, 13, 14, 14, 13];
+function ForecastGraph({ data, temperature, style }) {
+  // finding the maximum and minimum values in the array
 
-// max degree - 25
-// min degree - 13
-// average degree = 25+13/2 = 19(no)
-// find the difference between either of degrees and the average degree(no)
-// the difference between max and min - 12degrees
-// 100/1.5~ = 83- the hegiht
-// how much is one degree (proportion)
-// 12degree == 83px
-// 1degree = 83px/12 = ~7px
-function ForecastGraph(props) {
-  let min = Math.min(...temperatureDay),
-    max = Math.max(...temperatureNight);
+  let max = Math.max(...temperature),
+    min = Math.min(...temperature);
+  // finding the difference to be able to calculate by how much the height of the line should be curved
   let difference = max - min;
-  let maxHeight = 70;
-  let degreeOfChange = Math.abs(maxHeight / difference);
-  console.log(props.props.startingPoint);
-  const temperatureData = [
-    {
-      x1: props.props.startingPoint,
-      y1: 50,
-      x2: props.props.startingPoint + props.props.widthOfContainers,
-      y2: 50 + degreeOfChange,
-    },
-    {
-      x1: 65 + 120 + 5,
-      y1: 70 + degreeOfChange,
-      x2: 65 + 5 + 120 + 120,
-      y2: 70 + degreeOfChange - degreeOfChange,
-    },
-  ];
+  // the max height to not go out of boundaries
+  let maxHeight = data.heightOfContainers;
+  let degreeOfChange = maxHeight / difference; // degree of change of Y axis
+
+  // the initial values of the graph
+  const temperatureData = {
+    x1: 0,
+    y1: 0,
+    x2: -data.startingPoint,
+    y2: 50,
+  };
+
   return (
     <>
-      <svg className={forecastCSS.graph}>
-        <circle
-          cx={temperatureData[0].x1}
-          cy={temperatureData[0].y1}
-          r="4px"
-          stroke="white"
-          strokeWidth="1"
-          fill="black"
-        />
-        {temperatureData.map((each, key) => (
-          <g key={key}>
-            <circle
-              cx={each.x2}
-              cy={each.y2}
-              r="4px"
-              stroke="white"
-              strokeWidth="1"
-              fill="black"
-            />
-            <line
-              x1={each.x1}
-              y1={each.y1}
-              x2={each.x2}
-              y2={each.y2}
-              stroke="white"
-            />
-          </g>
-        ))}
+      <svg className={forecastCSS.graph} id={style}>
+        {temperature.map((each, key) => {
+          temperatureData.x1 = temperatureData.x2;
+          temperatureData.y1 = temperatureData.y2;
+          temperatureData.x2 += data.widthOfContainers;
+
+          if (temperature[key - 1] > each) {
+            temperatureData.y2 +=
+              degreeOfChange * Math.abs(temperature[key - 1] - each);
+          } else if (temperature[key - 1] < each) {
+            temperatureData.y2 -=
+              degreeOfChange * Math.abs(temperature[key - 1] - each);
+          } else {
+            temperatureData.y2 += 0;
+          }
+
+          return (
+            <g key={key}>
+              <circle
+                cx={temperatureData.x2}
+                cy={temperatureData.y2}
+                r="4px"
+                stroke="white"
+                strokeWidth="1"
+                fill="black"
+              />
+
+              {/* display the data according to dayTime standards */}
+              {style === forecastCSS.dayTime && (
+                <>
+                  <text
+                    fontSize="16"
+                    fill="white"
+                    textAnchor="middle"
+                    alignmentBaseline="baseline"
+                    x={temperatureData.x2}
+                    y={temperatureData.y2 - 10}
+                  >
+                    {temperature[key]}°
+                  </text>
+                  <line
+                    x1={temperatureData.x1}
+                    y1={temperatureData.y1}
+                    x2={temperatureData.x2}
+                    y2={temperatureData.y2}
+                    stroke="white"
+                  />
+                </>
+              )}
+              {/* display the data according to nightTime standards */}
+              {style === forecastCSS.nightTime && (
+                <>
+                  <line
+                    x1={temperatureData.x1}
+                    y1={temperatureData.y1}
+                    x2={temperatureData.x2}
+                    y2={temperatureData.y2}
+                    stroke="white"
+                  />
+                  <text
+                    fontSize="16"
+                    fill="white"
+                    textAnchor="middle"
+                    alignmentBaseline="baseline"
+                    x={temperatureData.x2}
+                    y={temperatureData.y2 + 20}
+                  >
+                    {temperature[key]}°
+                  </text>
+                </>
+              )}
+            </g>
+          );
+        })}
       </svg>
     </>
   );

@@ -1,16 +1,12 @@
 .eachDay {
-  /* height: 500px; */
-  /* border: 2px solid white; */
   border-radius: 30px;
   padding: 10px 0px 0px;
   width: 120px;
-  filter: opacity(0.8);
+  filter: opacity(0.75);
   text-align: center;
-
   transition: 0.3s;
 }
 .eachDay:hover {
-  /* backdrop-filter: opacity(0.4); */
   background-color: #474343;
 }
 
@@ -27,7 +23,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* gap: 10px; */
   position: relative;
 }
 
@@ -38,27 +33,32 @@
 }
 
 .random {
-  height: 100px;
+  margin: 70px 0;
+  height: 30px;
 }
 
 .graph {
   position: absolute;
-  top: 36%;
-  height:100px;
-  border:1px solid red;
-  width:100%;
-}
-#graph2{
-  top:55%;
+  height: 100px;
+  width: 100%;
 }
 
-@media (max-width: 768px) {
-  .mainContainer {
-    gap: 0;
+#nightTime {
+  top: 55%;
+}
+
+#dayTime {
+  top: 36%;
+}
+
+@media (max-width: 769px) {
+  .graph {
+    left: 0;
+    width: 100%;
   }
-  .graph{
-    left:0;
-    width:100%;
+  .random {
+    margin: 50px 0;
+    height: 15px;
   }
   .eachDay {
     width: 70px;

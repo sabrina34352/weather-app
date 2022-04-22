@@ -4,7 +4,6 @@ import cloudwithrainandstorm from "../assets/cloudwithstorm.svg";
 import moon from "../assets/moonReal.svg";
 import moonandcloud from "../assets/moonAndClouds.svg";
 import ForecastGraph from "../components/ForecastGraph";
-import ForecastGraphNight from "../components/ForecastGraphNight";
 import React, { useRef, useEffect, useState } from "react";
 
 const days = [
@@ -50,15 +49,19 @@ function Forecast() {
   const childRef = useRef(null);
   const [dataExists, setDataExists] = useState({});
 
+  const temperatureDay = [23, 23, 24, 24, 22,24];
+  const temperatureNight = [13, 14, 14, 13, 13,14];
+
   useEffect(() => {
     let widthMiddle = divRef.current.offsetWidth;
     let WidthOfChild = childRef.current.offsetWidth;
-    console.log("Width of child: ", WidthOfChild);
+    let heightOfChild = childRef.current.offsetHeight;
     //width of the parent container divided by the number of elements and divided by 2 to find the middle
-    // width of child container to be able to draw a line to ny exact pixels
+    // width of child container to be able to draw a line to  exact pixels
     setDataExists({
       startingPoint: widthMiddle / 10,
       widthOfContainers: WidthOfChild,
+      heightOfContainers: heightOfChild,
     });
   }, []);
   return (
@@ -66,13 +69,23 @@ function Forecast() {
       <div className={forecastCSS.mainContainer} ref={divRef}>
         {Object.keys(dataExists).length !== 0 && (
           <>
-            <ForecastGraph props={dataExists} />
-            <ForecastGraphNight />
+            {/* for dayTime */}
+            <ForecastGraph
+              data={dataExists}
+              temperature={temperatureDay}
+              style={forecastCSS.dayTime}
+            />
+            {/* for nightTime */}
+            <ForecastGraph
+              data={dataExists}
+              temperature={temperatureNight}
+              style={forecastCSS.nightTime}
+            />
           </>
         )}
 
         {days.map((bud) => (
-          <div className={forecastCSS.eachDay} ref={childRef} key={bud.day}>
+          <div className={forecastCSS.eachDay} key={bud.day}>
             <p className={forecastCSS.bigFont}>{bud.day}</p>
             <p className={forecastCSS.smallFont}>{bud.date}</p>
             <img
@@ -80,7 +93,7 @@ function Forecast() {
               className={forecastCSS.images}
               alt="weather"
             />
-            <div className={forecastCSS.random}></div>
+            <div className={forecastCSS.random} ref={childRef}></div>
             <div className={forecastCSS.random}></div>
             <img
               src={bud.weatherNight}
