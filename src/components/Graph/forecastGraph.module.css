@@ -6,6 +6,19 @@
 #nightTime {
   top: 55%;
 }
+.circle {
+  stroke: white;
+  stroke-width: 1;
+  fill: black;
+  r: 4px;
+}
+.text{
+  font-size: 16px;
+  fill:white;
+  text-anchor: middle;
+  
+
+}
 
 #dayTime {
   top: 36%;

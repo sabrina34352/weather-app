@@ -41,22 +41,17 @@ function ForecastGraph({ data, temperature, style }) {
             <circle
               cx={temperatureData.x2}
               cy={temperatureData.y2}
-              r="4px"
-              stroke="white"
-              strokeWidth="1"
-              fill="black"
+              className={forecastGraphCSS.circle}
             />
 
             {/* display the data according to dayTime standards */}
             {style === forecastGraphCSS.dayTime && (
               <>
                 <text
-                  fontSize="16"
-                  fill="white"
-                  textAnchor="middle"
-                  alignmentBaseline="baseline"
+                  className={forecastGraphCSS.text}
+                  // alignmentBaseline="baseline"
                   x={temperatureData.x2}
-                  y={temperatureData.y2 - 15}
+                  y={temperatureData.y2 - 13}
                 >
                   {temperature[key]}°
                 </text>
@@ -80,10 +75,8 @@ function ForecastGraph({ data, temperature, style }) {
                   stroke="white"
                 />
                 <text
-                  fontSize="16"
-                  fill="white"
-                  textAnchor="middle"
-                  alignmentBaseline="baseline"
+                  className={forecastGraphCSS.text}
+                  // alignmentBaseline="baseline"
                   x={temperatureData.x2}
                   y={temperatureData.y2 + 20}
                 >
