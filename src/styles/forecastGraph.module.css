@@ -1,0 +1,19 @@
+.graph {
+  position: absolute;
+  height: 100px;
+  width: 100%;
+}
+#nightTime {
+  top: 55%;
+}
+
+#dayTime {
+  top: 36%;
+}
+
+@media (max-width: 769px) {
+  .graph {
+    left: 0;
+    width: 100%;
+  }
+}

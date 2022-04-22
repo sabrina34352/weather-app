@@ -1,5 +1,5 @@
 import React from "react";
-import forecastCSS from "../styles/forecast.module.css";
+import forecastGraphCSS from "../styles/forecastGraph.module.css";
 
 function ForecastGraph({ data, temperature, style }) {
   // finding the maximum and minimum values in the array
@@ -22,7 +22,7 @@ function ForecastGraph({ data, temperature, style }) {
 
   return (
     <>
-      <svg className={forecastCSS.graph} id={style}>
+      <svg className={forecastGraphCSS.graph} id={style}>
         {temperature.map((each, key) => {
           temperatureData.x1 = temperatureData.x2;
           temperatureData.y1 = temperatureData.y2;
@@ -50,7 +50,7 @@ function ForecastGraph({ data, temperature, style }) {
               />
 
               {/* display the data according to dayTime standards */}
-              {style === forecastCSS.dayTime && (
+              {style === forecastGraphCSS.dayTime && (
                 <>
                   <text
                     fontSize="16"
@@ -72,7 +72,7 @@ function ForecastGraph({ data, temperature, style }) {
                 </>
               )}
               {/* display the data according to nightTime standards */}
-              {style === forecastCSS.nightTime && (
+              {style === forecastGraphCSS.nightTime && (
                 <>
                   <line
                     x1={temperatureData.x1}

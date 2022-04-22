@@ -1,4 +1,5 @@
 import forecastCSS from "../styles/forecast.module.css";
+import forecastGraphCSS from "../styles/forecastGraph.module.css";
 import cloudwithrain from "../assets/cloudwithrain.svg";
 import cloudwithrainandstorm from "../assets/cloudwithstorm.svg";
 import moon from "../assets/moonReal.svg";
@@ -49,8 +50,8 @@ function Forecast() {
   const childRef = useRef(null);
   const [dataExists, setDataExists] = useState({});
 
-  const temperatureDay = [23, 23, 24, 24, 22,24];
-  const temperatureNight = [13, 14, 14, 13, 13,14];
+  const temperatureDay = [23, 23, 24, 24, 22, 24];
+  const temperatureNight = [13, 14, 14, 13, 13, 14];
 
   useEffect(() => {
     let widthMiddle = divRef.current.offsetWidth;
@@ -73,13 +74,13 @@ function Forecast() {
             <ForecastGraph
               data={dataExists}
               temperature={temperatureDay}
-              style={forecastCSS.dayTime}
+              style={forecastGraphCSS.dayTime}
             />
             {/* for nightTime */}
             <ForecastGraph
               data={dataExists}
               temperature={temperatureNight}
-              style={forecastCSS.nightTime}
+              style={forecastGraphCSS.nightTime}
             />
           </>
         )}
