@@ -18,8 +18,8 @@ function ForecastGraph({ data, temperature, style }) {
     x2: -data.startingPoint,
     y2: 70,
   };
-
   return (
+
     <svg className={forecastGraphCSS.graph} id={style}>
       {temperature.map((each, key) => {
         temperatureData.x1 = temperatureData.x2;
