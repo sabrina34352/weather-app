@@ -44,8 +44,8 @@ function Forecast({ data, temperatureDay, temperatureNight }) {
           <p className={forecastCSS.bigFont}>{bud.day}</p>
           <p className={forecastCSS.smallFont}>{bud.date}</p>
           <img src={bud.weather} className={forecastCSS.images} alt="weather" />
-          <div className={forecastCSS.random} ref={childRef}></div>
-          <div className={forecastCSS.random}></div>
+          <div className={forecastCSS.graphSpace} ref={childRef}></div>
+          <div className={forecastCSS.graphSpace}></div>
           <img
             src={bud.weatherNight}
             className={forecastCSS.images}

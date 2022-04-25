@@ -3,9 +3,6 @@ import cloudwithrainandstorm from "./cloudwithstorm.svg";
 import moon from "./moonReal.svg";
 import moonandcloud from "./moonAndClouds.svg";
 
-// const temperatureNight = [13, 14, 14, 13, 13, 14];
-// const temperatureDay = [23, 23, 24, 24, 22, 24];
-
 export const days = [
   {
     day: "Вчера",
@@ -13,7 +10,7 @@ export const days = [
     weather: cloudwithrain,
     weatherNight: moonandcloud,
     wind: "3.1 m/c",
-    dayTemp: 23,
+    dayTemp: 22,
     nightTemp: 13,
   },
   {
@@ -51,6 +48,5 @@ export const days = [
     wind: "3.6 m/c",
     dayTemp: 24,
     nightTemp: 14,
-  }
-  
+  },
 ];

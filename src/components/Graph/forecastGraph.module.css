@@ -1,6 +1,6 @@
 .graph {
   position: absolute;
-  height: 100px;
+  height: 140px;
   width: 100%;
 }
 #nightTime {
@@ -12,16 +12,14 @@
   fill: black;
   r: 4px;
 }
-.text{
+.text {
   font-size: 16px;
-  fill:white;
+  fill: white;
   text-anchor: middle;
-  
-
 }
 
 #dayTime {
-  top: 36%;
+  top: 30%;
 }
 
 @media (max-width: 769px) {

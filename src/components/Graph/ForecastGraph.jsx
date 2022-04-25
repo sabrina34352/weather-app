@@ -16,7 +16,7 @@ function ForecastGraph({ data, temperature, style }) {
     x1: 0,
     y1: 0,
     x2: -data.startingPoint,
-    y2: 50,
+    y2: 70,
   };
 
   return (
