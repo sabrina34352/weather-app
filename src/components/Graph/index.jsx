@@ -1,7 +1,7 @@
 import React from "react";
 import forecastGraphCSS from "./forecastGraph.module.css";
 
-function ForecastGraph({ data, temperature, style }) {
+function Graph({ data, temperature, style }) {
   // finding the maximum and minimum values in the array
   let max = Math.max(...temperature),
     min = Math.min(...temperature);
@@ -93,4 +93,4 @@ function ForecastGraph({ data, temperature, style }) {
   );
 }
 
-export default ForecastGraph;
+export default Graph;
