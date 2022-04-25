@@ -19,7 +19,7 @@ function Forecast({ data, temperatureDay, temperatureNight }) {
       widthOfContainers: WidthOfChild,
       heightOfContainers: heightOfChild,
     });
-  }, [containerData]);
+  }, [containerData, data.length]);
   return (
     <div className={forecastCSS.mainContainer} ref={divRef}>
       {Object.keys(containerData).length !== 0 && (

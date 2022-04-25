@@ -10,7 +10,7 @@ export const days = [
     weather: cloudwithrain,
     weatherNight: moonandcloud,
     wind: "3.1 m/c",
-    dayTemp: 22,
+    dayTemp: 23,
     nightTemp: 13,
   },
   {
