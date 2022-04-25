@@ -3,7 +3,7 @@ import forecastGraphCSS from "../Graph/forecastGraph.module.css";
 import ForecastGraph from "../Graph/ForecastGraph";
 import React, { useRef, useEffect, useState } from "react";
 
-function Forecast({ data, temperatureDay, temperatureNight }) {
+function Forecast({ data }) {
   const divRef = useRef(null);
   const childRef = useRef(null);
   const [containerData, setcontainerData] = useState({});
@@ -12,6 +12,7 @@ function Forecast({ data, temperatureDay, temperatureNight }) {
     let widthMiddle = divRef.current.offsetWidth;
     let WidthOfChild = childRef.current.offsetWidth;
     let heightOfChild = childRef.current.offsetHeight;
+    
     //width of the parent container divided by the number of elements and divided by 2 to find the middle
     // width of child container to be able to draw a line to  exact pixels
     setcontainerData({
@@ -27,13 +28,13 @@ function Forecast({ data, temperatureDay, temperatureNight }) {
           {/* for dayTime */}
           <ForecastGraph
             data={containerData}
-            temperature={temperatureDay}
+            temperature={data.map((each) => each.dayTemp)}
             style={forecastGraphCSS.dayTime}
           />
           {/* for nightTime */}
           <ForecastGraph
             data={containerData}
-            temperature={temperatureNight}
+            temperature={data.map((each) => each.nightTemp)}
             style={forecastGraphCSS.nightTime}
           />
         </>

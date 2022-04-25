@@ -18,6 +18,9 @@ function ForecastGraph({ data, temperature, style }) {
     x2: -data.startingPoint,
     y2: 70,
   };
+  window.addEventListener("resize", () => {
+    
+  })
   return (
     <svg className={forecastGraphCSS.graph} id={style}>
       {temperature.map((each, key) => {

@@ -1,7 +1,7 @@
 {
   "name": "weather-app",
   "version": "0.1.0",
-  "homepage": "https://sabrinababakulova.me/weather-app/",
+  "homepage": "http://sabrinababakulova.me/weather-app/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
