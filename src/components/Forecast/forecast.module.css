@@ -37,7 +37,7 @@
   height: 30px;
 }
 
-@media (max-width: 769px) {
+@media (max-width:810px) {
   .graphSpace {
     margin: 60px 0;
   }

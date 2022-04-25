@@ -22,7 +22,7 @@
   top: 30%;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 810px) {
   .graph {
     left: 0;
     width: 100%;
