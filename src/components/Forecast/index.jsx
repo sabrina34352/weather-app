@@ -30,6 +30,7 @@ function Forecast({ data }) {
             data={containerData}
             temperature={data.map((each) => each.dayTemp)}
             style={forecastGraphCSS.dayTime}
+            positioning
           />
           {/* for nightTime */}
           <Graph

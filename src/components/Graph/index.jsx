@@ -1,7 +1,7 @@
 import React from "react";
 import forecastGraphCSS from "./forecastGraph.module.css";
 
-function Graph({ data, temperature, style }) {
+function Graph({ data, temperature, style, positioning }) {
   // finding the maximum and minimum values in the array
   let max = Math.max(...temperature),
     min = Math.min(...temperature);
@@ -18,9 +18,7 @@ function Graph({ data, temperature, style }) {
     x2: -data.startingPoint,
     y2: 70,
   };
-  window.addEventListener("resize", () => {
-    
-  })
+  window.addEventListener("resize", () => {});
   return (
     <svg className={forecastGraphCSS.graph} id={style}>
       {temperature.map((each, key) => {
@@ -40,52 +38,28 @@ function Graph({ data, temperature, style }) {
 
         return (
           <g key={key}>
+            {/* display the data according to nightTime or dayTime standards based on positioning props */}
+            <text
+              className={forecastGraphCSS.text}
+              x={temperatureData.x2}
+              y={
+                positioning ? temperatureData.y2 - 15 : temperatureData.y2 + 25
+              }
+            >
+              {temperature[key]}°
+            </text>
             <circle
               cx={temperatureData.x2}
               cy={temperatureData.y2}
               className={forecastGraphCSS.circle}
             />
-
-            {/* display the data according to dayTime standards */}
-            {style === forecastGraphCSS.dayTime && (
-              <>
-                <text
-                  className={forecastGraphCSS.text}
-                  // alignmentBaseline="baseline"
-                  x={temperatureData.x2}
-                  y={temperatureData.y2 - 13}
-                >
-                  {temperature[key]}°
-                </text>
-                <line
-                  x1={temperatureData.x1}
-                  y1={temperatureData.y1}
-                  x2={temperatureData.x2}
-                  y2={temperatureData.y2}
-                  stroke="white"
-                />
-              </>
-            )}
-            {/* display the data according to nightTime standards */}
-            {style === forecastGraphCSS.nightTime && (
-              <>
-                <line
-                  x1={temperatureData.x1}
-                  y1={temperatureData.y1}
-                  x2={temperatureData.x2}
-                  y2={temperatureData.y2}
-                  stroke="white"
-                />
-                <text
-                  className={forecastGraphCSS.text}
-                  // alignmentBaseline="baseline"
-                  x={temperatureData.x2}
-                  y={temperatureData.y2 + 20}
-                >
-                  {temperature[key]}°
-                </text>
-              </>
-            )}
+            <line
+              x1={temperatureData.x1}
+              y1={temperatureData.y1}
+              x2={temperatureData.x2}
+              y2={temperatureData.y2}
+              stroke="white"
+            />
           </g>
         );
       })}
