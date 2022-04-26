@@ -23,6 +23,8 @@ function Forecast({ data }) {
   }, [containerData, data.length]);
   return (
     <div className={forecastCSS.mainContainer} ref={divRef}>
+      {/* after getting all the info about divs in the page, render the svg of the graphs */}
+
       {Object.keys(containerData).length !== 0 && (
         <>
           {/* for dayTime */}

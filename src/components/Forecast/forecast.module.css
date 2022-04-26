@@ -56,9 +56,9 @@
 
 @media (max-width: 400px) {
   .bigFont {
-    font-size: 14px;
+    font-size: 13px;
   }
-  .smallFont{
-    font-size: 10px;
+  .smallFont {
+    font-size: 9px;
   }
 }

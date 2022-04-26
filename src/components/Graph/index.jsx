@@ -5,8 +5,10 @@ function Graph({ data, temperature, style, positioning }) {
   // finding the maximum and minimum values in the array
   let max = Math.max(...temperature),
     min = Math.min(...temperature);
+
   // finding the difference to be able to calculate by how much the height of the line should be curved
   let difference = max - min;
+
   // the max height to not go out of boundaries
   let maxHeight = data.heightOfContainers;
   let degreeOfChange = maxHeight / difference; // degree of change of Y axis
@@ -18,7 +20,7 @@ function Graph({ data, temperature, style, positioning }) {
     x2: -data.startingPoint,
     y2: 70,
   };
-  window.addEventListener("resize", () => {});
+
   return (
     <svg className={forecastGraphCSS.graph} id={style}>
       {temperature.map((each, key) => {
