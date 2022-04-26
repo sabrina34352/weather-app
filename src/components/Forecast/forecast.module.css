@@ -53,3 +53,12 @@
     font-size: 13px;
   }
 }
+
+@media (max-width: 400px) {
+  .bigFont {
+    font-size: 14px;
+  }
+  .smallFont{
+    font-size: 10px;
+  }
+}
