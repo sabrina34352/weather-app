@@ -1,14 +1,15 @@
 module.exports = {
   env: {
     browser: true,
-    amd: true,
+    es2021: true,
     node: true,
   },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
   ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -16,8 +17,6 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react"],
-  rules: {
-    "react/prop-types": "off",
-  },
+  plugins: ["react", "@typescript-eslint"],
+  rules: {},
 };
