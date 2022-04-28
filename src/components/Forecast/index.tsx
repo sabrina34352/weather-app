@@ -1,7 +1,6 @@
-import forecastCSS from "./forecast.module.css";
-import forecastGraphCSS from "../Graph/forecastGraph.module.css";
 import Graph from "../Graph";
 import React, { useRef, useEffect, useState } from "react";
+import styled from "styled-components";
 
 type Props = {
   data: {
@@ -14,6 +13,64 @@ type Props = {
     nightTemp: number;
   }[];
 };
+
+const MainContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
+const EachDay = styled.div`
+  border-radius: 30px;
+  padding: 10px 0px 0px;
+  width: 120px;
+  filter: opacity(0.75);
+  text-align: center;
+  transition: 0.3s;
+  &:hover {
+    background-color: #474343;
+  }
+  @media (max-width: 768px) {
+    width: 70px;
+    border-radius: 20px;
+  }
+`;
+const BigFont = styled.p`
+  padding: 0;
+  font-size: 23px;
+  @media (max-width: 810px) {
+    font-size: 17px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 13px;
+  }
+`;
+const SmallFont = styled.p`
+  padding: 0;
+  margin-top: 0;
+  font-size: 17px;
+  @media (max-width: 810px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 9px;
+  }
+`;
+const GraphSpace = styled.div`
+  margin: 70px 0;
+  height: 30px;
+  @media (max-width: 810px) {
+    margin: 60px 0;
+  }
+`;
+const Images = styled.img`
+  margin: 20px 0;
+  width: 35px;
+  height: 30px;
+`;
 
 interface Container {
   startingPoint: number;
@@ -43,7 +100,7 @@ function Forecast({ data }: Props) {
     // width of child container to be able to draw a line to  exact pixels
   }, [containerData, data.length]);
   return (
-    <div className={forecastCSS.mainContainer} ref={divRef}>
+    <MainContainer ref={divRef}>
       {/* after getting all the info about divs in the page, render the svg of the graphs */}
 
       {Object.keys(containerData).length !== 0 && (
@@ -52,35 +109,31 @@ function Forecast({ data }: Props) {
           <Graph
             ContainerInfo={containerData}
             temperature={data.map((each) => each.dayTemp)}
-            style={forecastGraphCSS.dayTime}
+            FromTop="30%"
             positioning="dayTime"
           />
           {/* for nightTime */}
           <Graph
             ContainerInfo={containerData}
             temperature={data.map((each) => each.nightTemp)}
-            style={forecastGraphCSS.nightTime}
+            FromTop="55%"
             positioning={undefined}
           />
         </>
       )}
 
       {data.map((bud) => (
-        <div className={forecastCSS.eachDay} key={bud.day}>
-          <p className={forecastCSS.bigFont}>{bud.day}</p>
-          <p className={forecastCSS.smallFont}>{bud.date}</p>
-          <img src={bud.weather} className={forecastCSS.images} alt="weather" />
-          <div className={forecastCSS.graphSpace} ref={childRef}></div>
-          <div className={forecastCSS.graphSpace}></div>
-          <img
-            src={bud.weatherNight}
-            className={forecastCSS.images}
-            alt="weatherNight"
-          />
-          <p className={forecastCSS.bigFont}>{bud.wind}</p>
-        </div>
+        <EachDay key={bud.day}>
+          <BigFont>{bud.day}</BigFont>
+          <SmallFont>{bud.date}</SmallFont>
+          <Images src={bud.weather} alt="weather" />
+          <GraphSpace ref={childRef}></GraphSpace>
+          <GraphSpace></GraphSpace>
+          <Images src={bud.weatherNight} alt="weatherNight" />
+          <BigFont>{bud.wind}</BigFont>
+        </EachDay>
       ))}
-    </div>
+    </MainContainer>
   );
 }
 

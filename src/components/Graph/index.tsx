@@ -1,5 +1,5 @@
 import React from "react";
-import forecastGraphCSS from "./forecastGraph.module.css";
+import styled from "styled-components";
 
 type Props = {
   ContainerInfo: {
@@ -8,11 +8,39 @@ type Props = {
     heightOfContainers: number;
   };
   temperature: number[];
-  style: string;
+  FromTop: string;
   positioning: string | undefined;
 };
+interface PositionProps {
+  top: string;
+}
 
-function Graph({ ContainerInfo, temperature, style, positioning }: Props) {
+const GraphImg = styled.svg<PositionProps>`
+  position: absolute;
+  height: 140px;
+  width: 100%;
+  top: ${(props) => props.top};
+  @media (max-width: 810px) {
+    left: 0;
+    width: 100%;
+  }
+`;
+const Text = styled.text`
+  font-size: 16px;
+  fill: white;
+  text-anchor: middle;
+`;
+const Circle = styled.circle`
+  stroke: white;
+  stroke-width: 1;
+  fill: black;
+  r: 4px;
+`;
+const Line = styled.line`
+  stroke: white;
+`;
+
+function Graph({ ContainerInfo, temperature, FromTop, positioning }: Props) {
   // finding the maximum and minimum values in the array
   const max = Math.max(...temperature),
     min = Math.min(...temperature);
@@ -33,7 +61,7 @@ function Graph({ ContainerInfo, temperature, style, positioning }: Props) {
   };
 
   return (
-    <svg className={forecastGraphCSS.graph} id={style}>
+    <GraphImg top={FromTop}>
       {temperature.map((each, key) => {
         temperatureData.x1 = temperatureData.x2;
         temperatureData.y1 = temperatureData.y2;
@@ -52,31 +80,25 @@ function Graph({ ContainerInfo, temperature, style, positioning }: Props) {
         return (
           <g key={key}>
             {/* display the data according to nightTime or dayTime standards based on positioning props */}
-            <text
-              className={forecastGraphCSS.text}
+            <Text
               x={temperatureData.x2}
               y={
                 positioning ? temperatureData.y2 - 15 : temperatureData.y2 + 25
               }
             >
               {temperature[key]}°
-            </text>
-            <circle
-              cx={temperatureData.x2}
-              cy={temperatureData.y2}
-              className={forecastGraphCSS.circle}
-            />
-            <line
+            </Text>
+            <Circle cx={temperatureData.x2} cy={temperatureData.y2} />
+            <Line
               x1={temperatureData.x1}
               y1={temperatureData.y1}
               x2={temperatureData.x2}
               y2={temperatureData.y2}
-              stroke="white"
             />
           </g>
         );
       })}
-    </svg>
+    </GraphImg>
   );
 }
 
