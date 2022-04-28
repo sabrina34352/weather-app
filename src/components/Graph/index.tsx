@@ -1,17 +1,16 @@
 import React from "react";
 import forecastGraphCSS from "./forecastGraph.module.css";
 
-
 type Props = {
   ContainerInfo: {
-    startingPoint: number,
-    widthOfContainers: number,
-    heightOfContainers: number,
-  },
-  temperature: number[],
-  style: string,
-  positioning: string | undefined,
-}
+    startingPoint: number;
+    widthOfContainers: number;
+    heightOfContainers: number;
+  };
+  temperature: number[];
+  style: string;
+  positioning: string | undefined;
+};
 
 function Graph({ ContainerInfo, temperature, style, positioning }: Props) {
   // finding the maximum and minimum values in the array

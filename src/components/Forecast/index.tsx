@@ -12,13 +12,13 @@ type Props = {
     wind: string;
     dayTemp: number;
     nightTemp: number;
-  }[]
-}
+  }[];
+};
 
 interface Container {
-  startingPoint: number,
-  widthOfContainers: number,
-  heightOfContainers: number,
+  startingPoint: number;
+  widthOfContainers: number;
+  heightOfContainers: number;
 }
 
 function Forecast({ data }: Props) {
