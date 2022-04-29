@@ -1,6 +1,6 @@
 import Graph from "../Graph";
 import React, { useRef, useEffect, useState } from "react";
-import styled from "styled-components";
+import * as S from "./styles";
 
 type Props = {
   data: {
@@ -13,64 +13,6 @@ type Props = {
     nightTemp: number;
   }[];
 };
-
-const MainContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;
-
-const EachDay = styled.div`
-  border-radius: 30px;
-  padding: 10px 0px 0px;
-  width: 120px;
-  filter: opacity(0.75);
-  text-align: center;
-  transition: 0.3s;
-  &:hover {
-    background-color: #474343;
-  }
-  @media (max-width: 768px) {
-    width: 70px;
-    border-radius: 20px;
-  }
-`;
-const BigFont = styled.p`
-  padding: 0;
-  font-size: 23px;
-  @media (max-width: 810px) {
-    font-size: 17px;
-  }
-
-  @media (max-width: 400px) {
-    font-size: 13px;
-  }
-`;
-const SmallFont = styled.p`
-  padding: 0;
-  margin-top: 0;
-  font-size: 17px;
-  @media (max-width: 810px) {
-    font-size: 13px;
-  }
-
-  @media (max-width: 400px) {
-    font-size: 9px;
-  }
-`;
-const GraphSpace = styled.div`
-  margin: 70px 0;
-  height: 30px;
-  @media (max-width: 810px) {
-    margin: 60px 0;
-  }
-`;
-const Images = styled.img`
-  margin: 20px 0;
-  width: 35px;
-  height: 30px;
-`;
 
 interface Container {
   startingPoint: number;
@@ -100,7 +42,7 @@ function Forecast({ data }: Props) {
     // width of child container to be able to draw a line to  exact pixels
   }, [containerData, data.length]);
   return (
-    <MainContainer ref={divRef}>
+    <S.MainContainer ref={divRef}>
       {/* after getting all the info about divs in the page, render the svg of the graphs */}
 
       {Object.keys(containerData).length !== 0 && (
@@ -123,17 +65,17 @@ function Forecast({ data }: Props) {
       )}
 
       {data.map((bud) => (
-        <EachDay key={bud.day}>
-          <BigFont>{bud.day}</BigFont>
-          <SmallFont>{bud.date}</SmallFont>
-          <Images src={bud.weather} alt="weather" />
-          <GraphSpace ref={childRef}></GraphSpace>
-          <GraphSpace></GraphSpace>
-          <Images src={bud.weatherNight} alt="weatherNight" />
-          <BigFont>{bud.wind}</BigFont>
-        </EachDay>
+        <S.EachDay key={bud.day}>
+          <S.BigFont>{bud.day}</S.BigFont>
+          <S.SmallFont>{bud.date}</S.SmallFont>
+          <S.Images src={bud.weather} alt="weather" />
+          <S.GraphSpace ref={childRef}></S.GraphSpace>
+          <S.GraphSpace></S.GraphSpace>
+          <S.Images src={bud.weatherNight} alt="weatherNight" />
+          <S.SmallFont>{bud.wind}</S.SmallFont>
+        </S.EachDay>
       ))}
-    </MainContainer>
+    </S.MainContainer>
   );
 }
 
