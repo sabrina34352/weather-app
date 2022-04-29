@@ -1,42 +1,33 @@
-import styled, { createGlobalStyle } from "styled-components";
-export const StyledApp = styled.div`
-  text-align: center;
-  background-color: #0f0e0e;
-  width: 800px;
-  height: 750px;
-  margin: 3em auto;
-  border-radius: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: white;
-  @media screen and (max-width: 810px) {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-  }
-`;
-export const Header = styled.h1`
-  font-size: 30px;
-`;
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-       background-color: #dddddd;
-    margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-@media screen and (max-width: 810px) {
-  body {
-    background-color: #0f0e0e;
-  }
-`;
+export const theme = {
+  colors: {
+    hover: "#474343",
+    primary: "#dddddd",
+    background: "#0f0e0e",
+  },
+  sizes: {
+    borderRadius: "25px",
+    circleRadius: "4px",
+    font: {
+      big: "1.5rem",
+      medium: "1rem",
+      small: "0.8rem",
+    },
+    containers: {
+      full: "100%",
+      big: "750px",
+      medium: "130px",
+      small: "70px",
+      extrasmall: "30px",
+    },
+    space: {
+      none: "0px",
+      smallNoSides: "1rem 0",
+      mediumNoSides: "3rem auto",
+      bigNoSides: "4.4rem 0",
+    },
+    resolutions: {
+      mobile: "400px",
+      tablet: "810px",
+    },
+  },
+};
