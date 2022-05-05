@@ -7,11 +7,11 @@ type Props = {
     heightOfContainers: number;
   };
   temperature: number[];
-  FromTop: string;
+  fromTop: string;
   positioning: string | undefined;
 };
 
-function Graph({ ContainerInfo, temperature, FromTop, positioning }: Props) {
+function Graph({ ContainerInfo, temperature, fromTop, positioning }: Props) {
   // finding the maximum and minimum values in the array
   const max = Math.max(...temperature),
     min = Math.min(...temperature);
@@ -31,7 +31,7 @@ function Graph({ ContainerInfo, temperature, FromTop, positioning }: Props) {
     y2: 70,
   };
   return (
-    <S.GraphImg top={FromTop}>
+    <S.GraphImg top={fromTop}>
       {temperature.map((each, key) => {
         temperatureData.x1 = temperatureData.x2;
         temperatureData.y1 = temperatureData.y2;

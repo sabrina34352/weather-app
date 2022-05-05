@@ -1,7 +1,6 @@
 import Graph from "../Graph";
 import React, { useRef, useEffect, useState } from "react";
 import * as S from "./styles";
-// import moon from "../../assets/moonReal.svg";
 import moon from "../../assets/moon.svg";
 import sun from "../../assets/sun.svg";
 import clouds from "../../assets/clouds.svg";
@@ -12,7 +11,6 @@ type Props = {
     date: string;
     time: string;
     weather: string;
-    weatherNight: string;
     wind: string;
     dayTemp: number;
     nightTemp: number;
@@ -28,9 +26,20 @@ interface Container {
 function Forecast({ data }: Props) {
   const divRef = useRef<HTMLDivElement>(null);
   const childRef = useRef<HTMLDivElement>(null);
-
   const [containerData, setcontainerData] = useState({} as Container);
 
+  function getWeatherIcon(weather: string) {
+    switch (weather) {
+      case "Clear":
+        return sun;
+      case "Clouds":
+        return clouds;
+      case "Rain":
+        return cloudwithrain;
+      default:
+        return sun;
+    }
+  }
   useEffect(() => {
     if (divRef && divRef.current && childRef && childRef.current) {
       const widthMiddle = divRef.current.offsetWidth;
@@ -56,34 +65,29 @@ function Forecast({ data }: Props) {
           <Graph
             ContainerInfo={containerData}
             temperature={data.map((each) => each.dayTemp)}
-            FromTop="30%"
+            fromTop="30%"
             positioning="dayTime"
           />
           {/* for nightTime */}
           <Graph
             ContainerInfo={containerData}
             temperature={data.map((each) => each.nightTemp)}
-            FromTop="55%"
+            fromTop="55%"
             positioning={undefined}
           />
         </>
       )}
 
-      {data.map((bud) => (
-        <S.EachDay key={bud.time}>
-          <S.BigFont>{bud.date}</S.BigFont>
-          <S.SmallFont>{bud.time}</S.SmallFont>
-          {bud.weather === "Clouds" && <S.Images src={clouds} alt="weather" />}
-          {bud.weather === "Clear" && <S.Images src={sun} alt="weather" />}
-          {bud.weather === "Rain" && (
-            <S.Images src={cloudwithrain} alt="weather" />
-          )}
+      {data.map((day) => (
+        <S.EachDay key={day.time}>
+          <S.BigFont>{day.date}</S.BigFont>
+          <S.SmallFont>{day.time}</S.SmallFont>
 
-          {/* <S.SmallFont>{bud.weather}</S.SmallFont> */}
+          <S.Images src={getWeatherIcon(day.weather)} alt="weather" />
           <S.GraphSpace ref={childRef}></S.GraphSpace>
           <S.GraphSpace></S.GraphSpace>
           <S.Images src={moon} alt="weatherNight" />
-          <S.SmallFont>{bud.wind}</S.SmallFont>
+          <S.SmallFont>{day.wind}</S.SmallFont>
         </S.EachDay>
       ))}
     </S.MainContainer>
