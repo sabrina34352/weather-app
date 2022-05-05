@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../theme"
+import { theme } from "../../theme";
 interface PositionProps {
   top: string;
 }
@@ -22,7 +22,7 @@ export const Circle = styled.circle`
   stroke: ${theme.colors.primary};
   stroke-width: 1;
   fill: ${theme.colors.primary};
-  r:${theme.sizes.circleRadius};
+  r: ${theme.sizes.circleRadius};
 `;
 export const Line = styled.line`
   stroke: ${theme.colors.primary};

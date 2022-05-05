@@ -8,7 +8,5 @@
     "static/media/moonReal.svg": "/weather-app/static/media/moonReal.e4f7f8260e7aebb68f5aab257c5307f1.svg",
     "main.1e73c767.js.map": "/weather-app/static/js/main.1e73c767.js.map"
   },
-  "entrypoints": [
-    "static/js/main.1e73c767.js"
-  ]
+  "entrypoints": ["static/js/main.1e73c767.js"]
 }

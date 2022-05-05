@@ -1,7 +1,7 @@
 import Forecast from "./components/Forecast";
 import dataAPI from "./components/api/weatherAPI";
 import React, { useEffect, useState } from "react";
-import * as Style from "./theme";
+import * as Style from "./style";
 
 function App() {
   const [days, setDays] = useState([]);
