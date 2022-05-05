@@ -1,6 +1,5 @@
 import React from "react";
 import * as S from "./styles";
-
 type Props = {
   ContainerInfo: {
     startingPoint: number;
@@ -31,7 +30,6 @@ function Graph({ ContainerInfo, temperature, FromTop, positioning }: Props) {
     x2: -ContainerInfo.startingPoint,
     y2: 70,
   };
-
   return (
     <S.GraphImg top={FromTop}>
       {temperature.map((each, key) => {

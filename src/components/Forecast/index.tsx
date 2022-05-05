@@ -4,8 +4,8 @@ import * as S from "./styles";
 
 type Props = {
   data: {
-    day: string;
     date: string;
+    time: string;
     weather: string;
     weatherNight: string;
     wind: string;
@@ -36,6 +36,8 @@ function Forecast({ data }: Props) {
         widthOfContainers: WidthOfChild,
         heightOfContainers: heightOfChild,
       });
+
+      
     }
 
     //width of the parent container divided by the number of elements and divided by 2 to find the middle
@@ -65,13 +67,14 @@ function Forecast({ data }: Props) {
       )}
 
       {data.map((bud) => (
-        <S.EachDay key={bud.day}>
-          <S.BigFont>{bud.day}</S.BigFont>
-          <S.SmallFont>{bud.date}</S.SmallFont>
-          <S.Images src={bud.weather} alt="weather" />
+        <S.EachDay key={bud.time}>
+          <S.BigFont>{bud.date}</S.BigFont>
+          <S.SmallFont>{bud.time}</S.SmallFont>
+          {/* <S.Images src={bud.weather} alt="weather" /> */}
+          <S.SmallFont>{bud.weather}</S.SmallFont>
           <S.GraphSpace ref={childRef}></S.GraphSpace>
           <S.GraphSpace></S.GraphSpace>
-          <S.Images src={bud.weatherNight} alt="weatherNight" />
+          {/* <S.Images src={bud.weatherNight} alt="weatherNight" /> */}
           <S.SmallFont>{bud.wind}</S.SmallFont>
         </S.EachDay>
       ))}
