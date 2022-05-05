@@ -1,6 +1,11 @@
 import Graph from "../Graph";
 import React, { useRef, useEffect, useState } from "react";
 import * as S from "./styles";
+// import moon from "../../assets/moonReal.svg";
+import moon from "../../assets/moon.svg";
+import sun from "../../assets/sun.svg";
+import clouds from "../../assets/clouds.svg";
+import cloudwithrain from "../../assets/cloudwithrain.svg";
 
 type Props = {
   data: {
@@ -36,8 +41,6 @@ function Forecast({ data }: Props) {
         widthOfContainers: WidthOfChild,
         heightOfContainers: heightOfChild,
       });
-
-      
     }
 
     //width of the parent container divided by the number of elements and divided by 2 to find the middle
@@ -70,11 +73,16 @@ function Forecast({ data }: Props) {
         <S.EachDay key={bud.time}>
           <S.BigFont>{bud.date}</S.BigFont>
           <S.SmallFont>{bud.time}</S.SmallFont>
-          {/* <S.Images src={bud.weather} alt="weather" /> */}
-          <S.SmallFont>{bud.weather}</S.SmallFont>
+          {bud.weather === "Clouds" && <S.Images src={clouds} alt="weather" />}
+          {bud.weather === "Clear" && <S.Images src={sun} alt="weather" />}
+          {bud.weather === "Rain" && (
+            <S.Images src={cloudwithrain} alt="weather" />
+          )}
+
+          {/* <S.SmallFont>{bud.weather}</S.SmallFont> */}
           <S.GraphSpace ref={childRef}></S.GraphSpace>
           <S.GraphSpace></S.GraphSpace>
-          {/* <S.Images src={bud.weatherNight} alt="weatherNight" /> */}
+          <S.Images src={moon} alt="weatherNight" />
           <S.SmallFont>{bud.wind}</S.SmallFont>
         </S.EachDay>
       ))}
