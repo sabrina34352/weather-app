@@ -9,7 +9,6 @@ function App() {
     dataAPI().then((data) => {
       setDays(data);
     });
-
   }, []);
   return (
     <>
@@ -20,7 +19,6 @@ function App() {
       </Style.StyledApp>
     </>
   );
-
 }
 
 export default App;
