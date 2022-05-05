@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from '../../theme'
 
 export const MainContainer = styled.div`
   display: flex;
@@ -8,52 +9,44 @@ export const MainContainer = styled.div`
 `;
 
 export const EachDay = styled.div`
-  border-radius: 30px;
-  padding: 10px 0px 0px;
-  width: 120px;
-  filter: opacity(0.75);
+  border-radius: ${theme.sizes.borderRadius};
+  
+  width: ${theme.sizes.containers.medium};
   text-align: center;
   transition: 0.3s;
   &:hover {
-    background-color: #474343;
+    background-color: ${theme.colors.hover};
   }
-  @media (max-width: 768px) {
-    width: 70px;
-    border-radius: 20px;
+  @media (max-width: ${theme.sizes.resolutions.tablet}) {
+    width:${theme.sizes.containers.small};
   }
 `;
 export const BigFont = styled.p`
-  padding: 0;
-  font-size: 23px;
-  @media (max-width: 810px) {
-    font-size: 17px;
+  padding: ${theme.sizes.space.none};
+  font-size: ${theme.sizes.font.big};
+  @media (max-width: ${theme.sizes.resolutions.tablet}) {
+    font-size: ${theme.sizes.font.medium};
   }
 
-  @media (max-width: 400px) {
-    font-size: 13px;
+  @media (max-width: ${theme.sizes.resolutions.mobile}) {
+    font-size: ${theme.sizes.font.small};
   }
 `;
 export const SmallFont = styled.p`
-  padding: 0;
-  margin-top: 0;
-  font-size: 17px;
-  @media (max-width: 810px) {
-    font-size: 13px;
-  }
-
-  @media (max-width: 400px) {
-    font-size: 9px;
+  padding: ${theme.sizes.space.none};
+  margin-top: ${theme.sizes.space.none};
+  font-size: ${theme.sizes.font.medium};
+  @media (max-width: ${theme.sizes.resolutions.tablet}) {
+    font-size: ${theme.sizes.font.small};
   }
 `;
 export const GraphSpace = styled.div`
-  margin: 70px 0;
-  height: 30px;
-  @media (max-width: 810px) {
-    margin: 60px 0;
-  }
+  margin: ${theme.sizes.space.bigNoSides};
+  height: ${theme.sizes.containers.extrasmall};
+  
 `;
 export const Images = styled.img`
-  margin: 20px 0;
-  width: 35px;
-  height: 30px;
+  margin: ${theme.sizes.space.smallNoSides};
+  width: ${theme.sizes.containers.extrasmall};
+
 `;
