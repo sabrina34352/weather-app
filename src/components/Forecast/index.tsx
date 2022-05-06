@@ -5,6 +5,7 @@ import moon from "../../assets/moon.svg";
 import sun from "../../assets/sun.svg";
 import clouds from "../../assets/clouds.svg";
 import cloudwithrain from "../../assets/cloudwithrain.svg";
+import wind from "../../assets/wind.svg";
 
 type Props = {
   data: {
@@ -80,14 +81,23 @@ function Forecast({ data }: Props) {
 
       {data.map((day) => (
         <S.EachDay key={day.time}>
-          <S.BigFont>{day.date}</S.BigFont>
-          <S.SmallFont>{day.time}</S.SmallFont>
+          <S.Label>{day.date}</S.Label>
+          <S.Description>{day.time}</S.Description>
 
           <S.Images src={getWeatherIcon(day.weather)} alt="weather" />
           <S.GraphSpace ref={childRef}></S.GraphSpace>
           <S.GraphSpace></S.GraphSpace>
           <S.Images src={moon} alt="weatherNight" />
-          <S.SmallFont>{day.wind}</S.SmallFont>
+          {/* <S.Description>wind speed</S.Description> */}
+           
+          <S.Description>
+            
+            
+             {day.wind}
+            
+            <S.WindImage src={wind} alt="wind" />
+          </S.Description>
+          
         </S.EachDay>
       ))}
     </S.MainContainer>

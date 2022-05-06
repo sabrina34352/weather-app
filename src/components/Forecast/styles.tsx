@@ -21,7 +21,7 @@ export const EachDay = styled.div`
     width: ${theme.sizes.containers.small};
   }
 `;
-export const BigFont = styled.p`
+export const Label = styled.p`
   padding: ${theme.sizes.space.none};
   font-size: ${theme.sizes.font.big};
   @media (max-width: ${theme.sizes.resolutions.tablet}) {
@@ -32,7 +32,8 @@ export const BigFont = styled.p`
     font-size: ${theme.sizes.font.small};
   }
 `;
-export const SmallFont = styled.p`
+export const Description = styled.p`
+
   padding: ${theme.sizes.space.none};
   margin-top: ${theme.sizes.space.none};
   font-size: ${theme.sizes.font.medium};
@@ -48,3 +49,8 @@ export const Images = styled.img`
   margin: ${theme.sizes.space.smallNoSides};
   width: ${theme.sizes.containers.extrasmall};
 `;
+export const WindImage = styled.img`
+  filter:invert(0.6);
+  margin: ${theme.sizes.space.none};
+  width: ${theme.sizes.containers.textSize};
+  `
