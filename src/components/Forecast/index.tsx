@@ -1,13 +1,17 @@
 import Graph from "../Graph";
 import React, { useRef, useEffect, useState } from "react";
 import * as S from "./styles";
+import moon from "../../assets/moon.svg";
+import sun from "../../assets/sun.svg";
+import clouds from "../../assets/clouds.svg";
+import cloudwithrain from "../../assets/cloudwithrain.svg";
+import wind from "../../assets/wind.svg";
 
 type Props = {
   data: {
-    day: string;
     date: string;
+    time: string;
     weather: string;
-    weatherNight: string;
     wind: string;
     dayTemp: number;
     nightTemp: number;
@@ -23,9 +27,20 @@ interface Container {
 function Forecast({ data }: Props) {
   const divRef = useRef<HTMLDivElement>(null);
   const childRef = useRef<HTMLDivElement>(null);
-
   const [containerData, setcontainerData] = useState({} as Container);
 
+  function getWeatherIcon(weather: string) {
+    switch (weather) {
+      case "Clear":
+        return sun;
+      case "Clouds":
+        return clouds;
+      case "Rain":
+        return cloudwithrain;
+      default:
+        return sun;
+    }
+  }
   useEffect(() => {
     if (divRef && divRef.current && childRef && childRef.current) {
       const widthMiddle = divRef.current.offsetWidth;
@@ -51,28 +66,38 @@ function Forecast({ data }: Props) {
           <Graph
             ContainerInfo={containerData}
             temperature={data.map((each) => each.dayTemp)}
-            FromTop="30%"
+            fromTop="30%"
             positioning="dayTime"
           />
           {/* for nightTime */}
           <Graph
             ContainerInfo={containerData}
             temperature={data.map((each) => each.nightTemp)}
-            FromTop="55%"
+            fromTop="55%"
             positioning={undefined}
           />
         </>
       )}
 
-      {data.map((bud) => (
-        <S.EachDay key={bud.day}>
-          <S.BigFont>{bud.day}</S.BigFont>
-          <S.SmallFont>{bud.date}</S.SmallFont>
-          <S.Images src={bud.weather} alt="weather" />
+      {data.map((day) => (
+        <S.EachDay key={day.time}>
+          <S.Label>{day.date}</S.Label>
+          <S.Description>{day.time}</S.Description>
+
+          <S.Images src={getWeatherIcon(day.weather)} alt="weather" />
           <S.GraphSpace ref={childRef}></S.GraphSpace>
           <S.GraphSpace></S.GraphSpace>
-          <S.Images src={bud.weatherNight} alt="weatherNight" />
-          <S.SmallFont>{bud.wind}</S.SmallFont>
+          <S.Images src={moon} alt="weatherNight" />
+          {/* <S.Description>wind speed</S.Description> */}
+           
+          <S.Description>
+            
+            
+             {day.wind}
+            
+            <S.WindImage src={wind} alt="wind" />
+          </S.Description>
+          
         </S.EachDay>
       ))}
     </S.MainContainer>

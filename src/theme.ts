@@ -18,6 +18,7 @@ export const theme = {
       medium: "130px",
       small: "70px",
       extrasmall: "30px",
+      textSize: "20px",
     },
     space: {
       none: "0px",

@@ -1,15 +1,20 @@
 import Forecast from "./components/Forecast";
-import { days } from "./components/days";
-import React from "react";
+import dataAPI from "./components/api/weatherAPI";
+import React, { useEffect, useState } from "react";
 import * as Style from "./style";
 
 function App() {
+  const [days, setDays] = useState([]);
+  useEffect(() => {
+    dataAPI().then((data) => {
+      setDays(data);
+    });
+  }, []);
   return (
     <>
       <Style.GlobalStyle />
       <Style.StyledApp>
-        <Style.Header>Прогноз на 5 дней</Style.Header>
-
+        <Style.Header>Прогноз на целый день </Style.Header>
         <Forecast data={days} />
       </Style.StyledApp>
     </>
